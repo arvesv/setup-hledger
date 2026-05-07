@@ -21,11 +21,11 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        brew update
         brew install hledger
 
     - name: Install hledger on Windows
       if: runner.os == 'Windows'
       shell: pwsh
       run: |
+        $ErrorActionPreference = 'Stop'
         choco install hledger --yes
