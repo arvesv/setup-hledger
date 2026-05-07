@@ -37,11 +37,11 @@ runs:
       run: |
         $ErrorActionPreference = 'Stop'
         if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-          Write-Error "Chocolatey is required to install hledger on Windows runners. Use a runner image with Chocolatey pre-installed."
+          Write-Host "::error::Chocolatey is required to install hledger on Windows runners. Use a runner image with Chocolatey pre-installed."
           exit 1
         }
         choco install hledger --yes
         if (-not (Get-Command hledger -ErrorAction SilentlyContinue)) {
-          Write-Error "Failed to install hledger on Windows."
+          Write-Host "::error::Failed to install hledger on Windows."
           exit 1
         }
