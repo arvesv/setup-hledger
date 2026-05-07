@@ -1,4 +1,4 @@
-name: setup-hledger
+name: Setup hledger
 description: Install hledger on the build agent
 runs:
   using: composite
@@ -38,6 +38,7 @@ runs:
         $ErrorActionPreference = 'Stop'
         if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
           Write-Error "Chocolatey is required to install hledger on Windows runners."
+          exit 1
         }
         choco install hledger --yes
         if (-not (Get-Command hledger -ErrorAction SilentlyContinue)) {
