@@ -43,4 +43,5 @@ runs:
         choco install hledger --yes
         if (-not (Get-Command hledger -ErrorAction SilentlyContinue)) {
           Write-Error "Failed to install hledger on Windows."
+          exit 1
         }
